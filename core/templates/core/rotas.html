@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="transporte público" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="shortcut icon" href="{% static 'Ico/65241ab4e3ac59000d8e12c4.ico' %}" type="image/x-icon">
+  <title>STPB</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.min.css' %}" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'bootstrap/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'bootstrap/css/responsive.css' %}" rel="stylesheet" />
+
+  <body>
+    <div class="hero_area">
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="header_bottom">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+              <a class="navbar-brand" href="{% url 'core_home' %}">
+                <div id="LogoSTPB">
+                  <img src="{% static 'Ico/6524231ae3ac59000f8e1707.png' %}" height="75" width="75">
+                </div>
+  
+              </a>
+  
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> </span>
+              </button>
+  
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ">
+                  <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'core_home' %}">Início <span class="sr-only"></span></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'core_rotas' %}">Rotas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'core_home' %}">Sobre</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'core_home' %}">FeedBack</a>
+                    <!--#Contato-->
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login
+                      <img src="{% static 'img/vector-login-sign-icon-removebg-preview.png' %}" width="25px" height="25px" style="margin-bottom: 3px;">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <section class="slider_section ">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="detail-box">
+                <h1>
+                  Rotas dos Transportes Públicos
+                </h1>
+                <p style="text-align: justify">
+                  Esta função do sistema fornece ao usuário informações das rotas dos transportes públicos disponíveis na sua região e seus respectivos horários.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="img-box">
+                <img src="{% static 'img/Mapa-de-Obras-removebg-preview.png' %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section>
+            <div class="map_section">
+              <h2>
+                Rotas
+              </h2>
+              <div class="Horarios">
+                <div class="card" style="width: 40rem;">
+                  <img src="{% static 'img/Rota1.jpg' %}" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">Ipiranga/Campolim</h5>
+                    <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#rota"> Veja a Rota!</button>
+                    <div id="rota" class="collapse">
+                      <div class="rotasmapa">
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d29269.55925405705!2d-47.5058632!3d-23.5074962!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x94c58a60b0436e49%3A0xfd0f8a6ec3a29008!2sParque%20Campolim%2C%20Sorocaba%20-%20SP!3m2!1d-23.529321!2d-47.4711066!4m5!1s0x94c5f4cf4ff4769f%3A0xde2b3840e142014f!2sIpiranga%2C%20Sorocaba%20-%20SP%2C%2018055-060!3m2!1d-23.4899694!2d-47.5024023!5e0!3m2!1spt-BR!2sbr!4v1698713402656!5m2!1spt-BR!2sbr" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <div class="card" style="width: 40rem;">
+                  <img src="{% static 'img/Rota2.png' %}" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">Ipanema/Av. Três de Março</h5>
+                    <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#rota2"> Veja a Rota!</button>
+                    <div id="rota2" class="collapse">
+                      <div class="rotasmapa">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d58550.223635669645!2d-47.47567559949702!3d-23.482495011653903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x94c5f535945b9bb7%3A0xa0dcc67d0870cb3b!2sAv.%20Ipanema%20-%20Vila%20Gomes%2C%20Sorocaba%20-%20SP%2C%2018070-671!3m2!1d-23.484569999999998!2d-47.469629999999995!4m5!1s0x94cf607b478060d9%3A0x9776bc4defcb295f!2sAv.%20Tr%C3%AAs%20de%20Mar%C3%A7o%20-%20Aparecidinha%2C%20Sorocaba%20-%20SP!3m2!1d-23.4668724!2d-47.39676!5e0!3m2!1spt-BR!2sbr!4v1698713295996!5m2!1spt-BR!2sbr" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <div class="card" style="width: 40rem;">
+                  <img src="{% static 'img/Rota3.png' %}" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">Éden/Brigadeiro Tobias</h5>
+                    <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#rota3"> Veja a Rota!</button>
+                    <div id="rota3" class="collapse">
+                      <div class="rotasmapa">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d58559.107144915186!2d-47.44802454970794!3d-23.462477303242125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x94cf5f1b3593b971%3A0x87d81d3d79ba4bac!2s%C3%89den%2C%20Sorocaba%20-%20SP!3m2!1d-23.4206663!2d-47.4159569!4m5!1s0x94cf66b520e7cd3b%3A0xe9eb2797caabb2d!2sBrigadeiro%20Tobias%2C%20Sorocaba%20-%20SP!3m2!1d-23.5040509!2d-47.371914499999995!5e0!3m2!1spt-BR!2sbr!4v1698713702203!5m2!1spt-BR!2sbr" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          
+
+
+
+            
+    </section>
+
+
+
+    <section class="info_section ">
+      <div class="container">
+        <h4>
+          Informações Para Contato
+        </h4>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="info_items">
+              <div class="row">
+                <div class="col-md-4">
+                  <a href="">
+                    <div class="item ">
+                      <div class="img-box ">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                      </div>
+                      <p>
+                        Localização
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a href="">
+                    <div class="item ">
+                      <div class="img-box ">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                      </div>
+                      <p>
+                        +02 1234567890
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a href="">
+                    <div class="item ">
+                      <div class="img-box">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                      </div>
+                      <p>
+                        STPB@gmail.com
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="social-box">
+        <h4>
+          Nos Acompanhe!
+        </h4>
+        <div class="box">
+          <a href="">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-youtube" aria-hidden="true"></i>
+          </a>
+          <a href="">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayDateYear"></span> Todos os Direitos Reservados por Grupo 6 UPX Smart Cities
+       
+        </p>
+      </div>
+    </footer>
+  
+
+      <script src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>
+      <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+      <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+      <script src="{% static 'bootstrap/js/custom.js' %}"></script>
+      <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+
+{% endblock %}
