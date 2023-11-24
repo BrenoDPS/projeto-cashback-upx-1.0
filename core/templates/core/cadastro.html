@@ -141,23 +141,23 @@ button{
     </div>
     <form action="" method="post">
         {% csrf_token %} 
-        <h3>Signup Here</h3>
+        <h3>Cadastrar uma conta</h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Username" name="username" id="username">
+        <label for="username">Usuário</label>
+        <input type="text" placeholder="Insira seu nome de usuário" name="username" id="username">
 
         <label for="email">Email</label>
-        <input type="email" placeholder="Email or Phone" name="email" id="email">
+        <input type="email" placeholder="Email ou Telefone" name="email" id="email">
 
-        <label for="password1">Password</label>
-        <input type="password" placeholder="Password" id="password1" name="password1">
+        <label for="password1">Senha</label>
+        <input type="password" placeholder="Insira sua senha" id="password1" name="password1">
 
 
-        <label for="password2">Confirm Password</label>
-        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
-        <button type="submit">Signup</button>
+        <label for="password2">Confirme a Senha</label>
+        <input type="password" placeholder="Confirme a Senha" id="password2" name="password2">
+        <button type="submit">Cadastrar</button>
         
-        <a href="{% url 'core_login' %}" >I already have an account</a>
+        <a href="{% url 'core_login' %}" >Eu já tenho uma conta</a>
     </form>
 </body>
 </html>

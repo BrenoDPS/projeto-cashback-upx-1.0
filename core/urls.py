@@ -5,7 +5,8 @@ from .views import (
     rotas,
     cadastro, 
     pagina_de_login, 
-    pagina_de_logout)
+    pagina_de_logout,
+    MyProfile)
 
 urlpatterns = [
     path('', home, name='core_home'),
@@ -14,4 +15,5 @@ urlpatterns = [
     path('login/', pagina_de_login, name='core_login'),
     # path('home/',views.HomePage, name='home'),
     path('logout/', pagina_de_logout, name='core_logout'),
+    path('profile/', MyProfile.as_view(), name="core_profile"),
 ]

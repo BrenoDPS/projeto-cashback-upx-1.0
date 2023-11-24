@@ -145,21 +145,21 @@ button{
         <div class="shape"></div>
     </div>
     <form method="post">
-        <h3>Login Here</h3>
+        <h3>Fazer login</h3>
         {% csrf_token %} 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Enter Username" id="username" name="username">
+        <label for="username">Usuário</label>
+        <input type="text" placeholder="Entre com seu Usuário" id="username" name="username">
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="pass">
+        <label for="password">Senha</label>
+        <input type="password" placeholder="Senha" id="password" name="pass">
 
-        <button type="submit">Log In</button>
+        <button type="submit">Entrar</button>
         <!-- <input type="button" value=""> -->
         <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div> -->
-        <a href="{% url 'core_cadastro' %}" >Create an account</a>
+        <a href="{% url 'core_cadastro' %}" >Criar uma conta</a>
     </form>
 </body>
 </html>

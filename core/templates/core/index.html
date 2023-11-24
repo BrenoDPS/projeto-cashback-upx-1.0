@@ -121,17 +121,19 @@
             Rotas
           </h5>
         </div>
-        <div class="box">
+        <!-- <div class="box">
           <div class="img-box">
             <img src="{% static 'img/2666513-removebg-preview.png' %}" width="100" height="100"> 
           </div>
           <h5 class="name">
             Recompensas
           </h5>
-        </div>
-        <div class="box">
+        </div> -->
+        <div class="box" href="{% url 'core_profile' %}">
           <div class="img-box">
-            <img src="{% static 'img/4645949-removebg-preview.png' %}" width="100" height="100"> 
+            <a href="{% url 'core_profile' %}">
+              <img src="{% static 'img/4645949-removebg-preview.png' %}" width="100" height="100">
+            </a>             
           </div>
           <h5 class="name">
              Perfil

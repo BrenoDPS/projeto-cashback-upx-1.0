@@ -3,7 +3,11 @@ from .models import UserProfile, Deposito
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-
+from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from .forms import UserUpdateForm, ProfileUpdateForm
+    
 
 """
 @login_required(login_url='login')
@@ -14,7 +18,7 @@ def HomePage(request):
 def LogoutPage(request):
     logout(request)
     return redirect('login')
-    """
+"""
 
 def fazer_deposito(request):
     if request.method == 'POST':
@@ -74,3 +78,72 @@ def pagina_de_login(request):
 def pagina_de_logout(request):
     logout(request)
     return redirect('core_login')
+
+
+class MyProfile(LoginRequiredMixin, View):
+
+    template_name = 'core/profile.html'
+
+    @login_required
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+    
+    def get(self, request):
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+        
+        context = {
+            'user_form': user_form,
+            'profile_form': profile_form
+        }
+        
+        return render(request, 'core/profile.html', context)
+    
+    def post(self,request):
+        user_form = UserUpdateForm(
+            request.POST, 
+            instance=request.user
+        )
+        profile_form = ProfileUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.profile
+        )
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            
+            messages.success(request,'Your profile has been updated successfully')
+            
+            return redirect('core_profile')
+        else:
+            context = {
+                'user_form': user_form,
+                'profile_form': profile_form
+            }
+            messages.error(request,'Error updating you profile')
+            
+            return render(request, 'core/profile.html', context)
+        
+
+def minha_view(request):
+    # Recupera o UserProfile associado ao usuário atual
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        # Obtenha o valor do depósito do formulário
+        valor_deposito = float(request.POST.get('valor_deposito', 0.0))
+
+        # Atualize o valor do depósito no UserProfile
+        user_profile.deposito.valor = valor_deposito
+        user_profile.deposito.save()
+
+    # Obtém o valor de cashback
+    cashback = user_profile.calcula_cashback
+
+    # Passa o valor de cashback para o contexto
+    context = {'cashback': cashback}
+
+    # Renderiza o arquivo HTML com o contexto
+    return render(request, 'core/profile.html', context)

@@ -1,22 +1,7 @@
+from decimal import Decimal
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
-
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    saldo = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
-
-    def __str__(self):
-        return self.user.username
-    
-
-    def calcular_cashback(self, valor_deposito):
-        cashback_percentage = 0.15
-        cashback = valor_deposito * cashback_percentage
-        self.saldo += cashback
-        self.save()
-        return cashback
 
 
 class Deposito(models.Model):
@@ -25,9 +10,24 @@ class Deposito(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.valor} reais"
-    
 
-"""
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # saldo = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    deposito = models.ForeignKey(Deposito, on_delete=models.CASCADE)
+
+    @property
+    def calcula_cashback(self):
+        cashback_percentage = Decimal('0.15')
+        cashback = self.deposito.valor * cashback_percentage
+        return cashback
+    
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.deposito.valor}"
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -51,6 +51,3 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             # overwrite the larger image
             img.save(self.avatar.path)
-
-
-"""
